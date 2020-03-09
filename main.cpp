@@ -56,23 +56,24 @@ void a::allotment()
     }
     while(n<=p)
     {
-        printf("\nseat number:");
-        scanf("%s",seat);
+        printf("seat number:\n");
+        scanf("%d",&seat);
         if(seat>45)
         {
             printf("only 45 seats are available");
         }
         else
         {
-            if(strcmp(bus[n].seat[seat/4][(seat%4)-1],"available")==0)
+            if(strcmp(bus[n].seat[seat/4][(seat%4)-1],"empty")==0)
             {
                 printf("enter passenger's name:");
-                bus[n].seat[seat/4][(seat%4)-1];
+                scanf("%s",bus[n].seat[seat/4][(seat%4)-1]);
                 break;
             }
             else
-            
+            {
                 printf("already booked!");
+            }
         }
     }
     if(n>p)
@@ -87,7 +88,7 @@ void a::empty()
     {
         for(int j=0;j<5;j++)
         {
-            strcpy(bus[p].seat[i][j],"available");
+            strcpy(bus[p].seat[i][j],"empty");
         }
     }
 }
@@ -124,14 +125,16 @@ void a::show()
         {
             for(int j=0;j<5;j++)
             {
-                if(strcmp(bus[n].seat[i][j],"available")!=0)
-                printf("\nthe seat no",a-1,"is reserved for",bus[n].seat[i][j],".");
+                if(strcmp(bus[n].seat[i][j],"empty")!=0)
+                printf("the seat no %d is reserved for %s",a-1,bus[n].seat[i][j]);
             }
         }
     break;
     }
     if(n>p)
-    printf("enter correct bus:");
+    {
+      printf("enter correct bus:");
+    }
 }
 void a::position(int I)
  {
@@ -164,7 +167,7 @@ void a::position(int I)
             
          }
      }
-     printf("there are" , p , "seats available in bus no:",bus[I].busn);
+     printf("there are %d seats available in bus no:%s",p,bus[I].busn);
 }
 void a::avail()
 {
@@ -205,7 +208,7 @@ int main()
         switch(w)
         {
             case 1: 
-                bus[0].install();
+                bus[p].install();
                 break;
             case 2: 
                 bus[0].allotment();
